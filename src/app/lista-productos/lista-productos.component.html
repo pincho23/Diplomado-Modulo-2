@@ -1,11 +1,16 @@
 
-<mat-list>
-  <mat-list-item *ngFor="let producto of productos">
-    <span matListItemTitle>{{ producto.nombre }}</span> 
-    <span matListItemLine>Precio: {{ producto.precio | currency }}</span>
-    <button mat-raised-button color="primary">Comprar</button>
-  </mat-list-item>
-</mat-list>
+<div class="product-list">
+  <app-product-card
+    *ngFor="let producto of productos"
+    [producto]="producto"
+    (addToCartEvent)="onAddToCart($event)"
+  ></app-product-card>
+</div>
+
+<h2>Carrito de Compras</h2>
+<ul>
+  <li *ngFor="let item of cart">{{ item.nombre }} - {{ item.precio | currency }}</li>
+</ul>
 
 
 
