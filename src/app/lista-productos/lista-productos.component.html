@@ -1,0 +1,11 @@
+
+<mat-list>
+  <mat-list-item *ngFor="let producto of productos">
+    <span matListItemTitle>{{ producto.nombre }}</span> 
+    <span matListItemLine>Precio: {{ producto.precio | currency }}</span>
+    <button mat-raised-button color="primary">Comprar</button>
+  </mat-list-item>
+</mat-list>
+
+
+
