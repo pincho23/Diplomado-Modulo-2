@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from '../product-card/product-card.component';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-lista-productos',
@@ -10,16 +11,13 @@ import { ProductCardComponent } from '../product-card/product-card.component';
   styleUrl: './lista-productos.component.css'
 })
 export class ListaProductosComponent {
-  productos = [
-    { nombre: 'Producto 1', descripcion: 'Descripción del producto 1', precio: 10 },
-    { nombre: 'Producto 2', descripcion: 'Descripción del producto 2', precio: 20 },
-    
-  ];
+  productos: any[] = [];
+  cart: any[] = [];
 
-  cart: any[] = []; 
+  constructor(private productService: ProductService) {}
 
-  onAddToCart(producto: any) {
-    this.cart.push(producto);
-    console.log('Producto agregado al carrito:', producto);
+  ngOnInit() {
+    this.productos = this.productService.getProducts();
+    this.cart = this.productService.getCart();
   }
 }

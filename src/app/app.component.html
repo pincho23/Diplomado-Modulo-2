@@ -235,8 +235,14 @@
     </div>
   </div> -->
 <main>
-
+  <span class="titulo">Catálogo de Productos</span>
   <app-lista-productos></app-lista-productos>
+  <mat-toolbar color="primary">
+    <span class="spacer"></span>
+    <button mat-button [routerLink]="'/cart'">
+      🛒 Carrito ({{ cartCount }})
+    </button>
+  </mat-toolbar>
 </main>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
