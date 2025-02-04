@@ -1,0 +1,18 @@
+.product-card{
+    max-width: 400px;
+}
+
+.mat-card-image {
+    width: 100%; /* La imagen ocupará todo el ancho */
+    height: 150px; /* Altura fija para todas las imágenes */
+    object-fit: cover; /* Recorta la imagen para ajustarse */
+    border-radius: 8px;
+}
+
+mat-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 250px; /* Tamaño fijo de las tarjetas */
+    height: 400px; /* Altura uniforme */
+}

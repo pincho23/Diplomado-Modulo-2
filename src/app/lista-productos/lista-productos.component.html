@@ -1,11 +1,14 @@
 
-<mat-form-field appearance="fill">
-  <mat-label>Buscar productos</mat-label>
-  <input matInput [(ngModel)]="searchQuery" placeholder="Buscar..." />
-</mat-form-field>
-
-<button mat-raised-button color="primary" (click)="onSearch()">Buscar</button>
-<button mat-button color="warn" (click)="clearSearch()">Limpiar</button>
+<div class="search-bar">
+  <mat-form-field appearance="fill">
+    <mat-label>Buscar productos</mat-label>
+    <input matInput [(ngModel)]="searchQuery" placeholder="Buscar..." />
+  </mat-form-field>
+  
+  <button mat-raised-button color="primary" (click)="onSearch()">Buscar</button>
+  <button mat-button color="warn" (click)="clearSearch()">Limpiar</button>
+  
+</div>
 <div class="product-list">
   <app-product-card
     *ngFor="let producto of productos$ | async"

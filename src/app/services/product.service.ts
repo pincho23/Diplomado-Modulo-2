@@ -7,8 +7,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ProductService {
 
   productos = [
-    { nombre: 'Producto 1', descripcion: 'Descripción del producto 1', precio: 10, categoria: 'cat1' },
-    { nombre: 'Producto 2', descripcion: 'Descripción del producto 2', precio: 20, categoria: 'cat2' },
+    { nombre: 'Producto 1', imagen:"https://img.freepik.com/vector-premium/lineas-codigo-software-pantalla-computadora-portatil_251819-2398.jpg",descripcion: 'Descripción del producto 1', precio: 10, categoria: 'cat1' },
+    { nombre: 'Producto 2', imagen: "https://gmedia.playstation.com/is/image/SIEPDC/ps5-product-thumbnail-01-en-14sep21?$facebook$",descripcion: 'Descripción del producto 2', precio: 20, categoria: 'cat2' },
     
   ];
 

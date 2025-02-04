@@ -3,12 +3,15 @@
       <mat-card-title>{{ producto.nombre }}</mat-card-title>
       <mat-card-subtitle>{{ producto.descripcion }}</mat-card-subtitle>
     </mat-card-header>
+    <img class="mat-card-image" src={{producto.imagen}}>
     <mat-card-content>
       <p>Categoría: {{ producto.categoria }}</p>
       <p>Precio: {{ producto.precio | currency }}</p>
+      
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button color="primary" (click)="addToCart()">Agregar al carrito</button>
     </mat-card-actions>
-  </mat-card>
+    
+</mat-card>
   
