@@ -1,17 +1,21 @@
-<mat-card class="product-card">
-    <mat-card-header>
-      <mat-card-title>{{ producto.nombre }}</mat-card-title>
-      <mat-card-subtitle>{{ producto.descripcion }}</mat-card-subtitle>
-    </mat-card-header>
-    <img class="mat-card-image" src={{producto.imagen}}>
-    <mat-card-content>
-      <p>Categoría: {{ producto.categoria }}</p>
-      <p>Precio: {{ producto.precio | currency }}</p>
-      
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="addToCart()">Agregar al carrito</button>
-    </mat-card-actions>
-    
+<mat-card class="product-card clickable-card" [routerLink]="['/producto', producto.nombre]">
+  <mat-card-header>
+    <mat-card-title>{{ producto.nombre }}</mat-card-title>
+    <mat-card-subtitle>{{ producto.descripcion }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <img mat-card-image [src]="producto.imagen" [alt]="producto.nombre" class="product-image">
+
+  <mat-card-content>
+    <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
+    <p><strong>Precio:</strong> {{ producto.precio | currency }}</p>
+  </mat-card-content>
+
+  <mat-card-actions (click)="$event.stopPropagation()">
+    <button mat-raised-button color="primary" (click)="addToCart($event)">Agregar al carrito</button>
+  </mat-card-actions>
 </mat-card>
+
+
+
   

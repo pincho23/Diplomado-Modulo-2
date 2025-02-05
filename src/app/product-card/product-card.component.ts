@@ -3,11 +3,13 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { ProductService } from '../services/product.service';
+import { RouterModule } from '@angular/router';
+
 
 
 @Component({
   selector: 'app-product-card',
-  imports: [MatListModule, CommonModule, MatCard, MatCardActions, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent],
+  imports: [RouterModule, MatListModule, CommonModule, MatCard, MatCardActions, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.css'
 })
@@ -17,7 +19,8 @@ export class ProductCardComponent {
 
   constructor(private productService: ProductService) {}
 
-  addToCart() {
-    this.productService.addToCart(this.producto); 
+  addToCart(event: MouseEvent) {
+    event.stopPropagation(); 
+    this.productService.addToCart(this.producto);
   }
 }

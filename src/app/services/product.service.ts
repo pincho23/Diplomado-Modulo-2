@@ -48,4 +48,8 @@ export class ProductService {
 
     this.filteredProducts.next(filtered);
   }
+
+  getProductByName(nombre: string): any {
+    return this.productos.find(p => p.nombre === nombre);
+  }
 }

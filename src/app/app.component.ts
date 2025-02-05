@@ -1,16 +1,25 @@
 import { Component } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
-import {ListaProductosComponent} from './lista-productos/lista-productos.component';
+import { RouterModule, RouterOutlet } from '@angular/router';  
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { ProductService } from './services/product.service';
+import { ListaProductosComponent } from './lista-productos/lista-productos.component';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ListaProductosComponent, CommonModule, MatToolbarModule, MatButtonModule, RouterModule],
+  standalone: true,
+  imports: [
+    RouterModule,  
+    RouterOutlet,                  
+    CommonModule,
+    MatToolbarModule,
+    MatButtonModule,
+    ListaProductosComponent,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'productos';

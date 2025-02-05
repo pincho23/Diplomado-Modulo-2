@@ -1,0 +1,25 @@
+.product-detail-card {
+    width: 400px;
+    margin: auto;
+    text-align: center;
+    
+  }
+  
+  .product-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+
+  .product-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+  }
