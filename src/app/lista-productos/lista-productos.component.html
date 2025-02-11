@@ -9,13 +9,18 @@
   <button mat-button color="warn" (click)="clearSearch()">Limpiar</button>
   
 </div>
-<div class="product-list">
-  <app-product-card
-    *ngFor="let producto of productos$ | async"
-    [producto]="producto"
-  ></app-product-card>
-</div>
+<div *ngIf="isLoading">Cargando productos...</div>
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
 
+<div class="product-list">
+  <app-product-card *ngFor="let producto of productos$ | async" [producto]="producto"></app-product-card>
+</div>
+<br>
+<div class="pagination">
+  <button mat-button (click)="prevPage()" [disabled]="currentPage === 0">Anterior</button>
+  <span>Página {{ currentPage + 1 }}</span>
+  <button mat-button (click)="nextPage()">Siguiente</button>
+</div>
 <h2>Carrito de Compras</h2>
 <ul>
   <li *ngFor="let item of cart">{{ item.nombre }} - {{ item.precio | currency }}</li>

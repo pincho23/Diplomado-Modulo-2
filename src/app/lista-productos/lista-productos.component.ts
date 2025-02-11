@@ -15,15 +15,51 @@ import { MatInput } from '@angular/material/input';
   styleUrl: './lista-productos.component.css'
 })
 export class ListaProductosComponent implements OnInit {
-  productos$!: Observable<any[]>;
+  productos$: Observable<any[]>; 
+  currentPage = 0;
+  itemsPerPage = 12;
+  isLoading = false;
+  errorMessage = '';
   cart: any[] = [];
   searchQuery: string = '';
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService) {
+    this.productos$ = this.productService.filteredProducts$;
+  }
 
   ngOnInit() {
-    this.productos$ = this.productService.getProducts();
+    this.loadProductos();
     this.cart = this.productService.getCart();
+  }
+
+  loadProductos() {
+    this.isLoading = true;
+    this.errorMessage = '';
+  
+    this.productService.fetchProductos(this.currentPage * this.itemsPerPage, this.itemsPerPage)
+      .subscribe({
+        next: (data: any[]) => {
+          this.productService.actualizarProductos(data); // Actualiza la lista de productos
+          this.productService.filterProducts(''); // Resetea el filtro
+          this.isLoading = false;
+        },
+        error: (error: any) => {
+          this.errorMessage = 'Error al cargar productos. Inténtalo de nuevo.';
+          this.isLoading = false;
+        }
+      });
+  }
+
+  nextPage() {
+    this.currentPage++;
+    this.loadProductos();
+  }
+
+  prevPage() {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+      this.loadProductos();
+    }
   }
 
   onSearch() {

@@ -16,7 +16,7 @@ import { ListaProductosComponent } from './lista-productos/lista-productos.compo
     CommonModule,
     MatToolbarModule,
     MatButtonModule,
-    ListaProductosComponent,
+    
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
