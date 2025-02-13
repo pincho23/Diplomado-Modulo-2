@@ -9,6 +9,8 @@ export class ProductService {
   private apiUrl = 'https://pokeapi.co/api/v2/pokemon';
   private productos = new BehaviorSubject<any[]>([]);
   productos$ = this.productos.asObservable();
+  private hasErrorSubject = new BehaviorSubject<boolean>(false);
+  hasError$ = this.hasErrorSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -34,13 +36,20 @@ export class ProductService {
       }),
       catchError(error => {
         console.error('Error al obtener productos:', error);
+        this.hasErrorSubject.next(true);
+        alert('Error de conexión: No se pudo obtener los productos.');
         return of([]); // Retorna un array vacío en caso de error
-      })
+      }),
+      
     );
   }
 
   actualizarProductos(productos: any[]) {
     this.productos.next(productos); // Actualiza el estado de productos
+  }
+
+  resetError() {
+    this.hasErrorSubject.next(false);
   }
 
   private cart: any[] = [];

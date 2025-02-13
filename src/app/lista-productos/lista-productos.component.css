@@ -24,3 +24,26 @@
     justify-content: center;
   }
 
+  .error-container {
+    background-color: #ff4d4d; /* Rojo */
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 20px;
+  }
+  
+  .error-container button {
+    background-color: white;
+    color: #ff4d4d;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  
+  .error-container button:hover {
+    background-color: #ff9999;
+  }
+

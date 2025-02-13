@@ -7,12 +7,15 @@
   
   <button mat-raised-button color="primary" (click)="onSearch()">Buscar</button>
   <button mat-button color="warn" (click)="clearSearch()">Limpiar</button>
-  
+</div>
+<div *ngIf="hasError$ | async" class="error-container">
+  <p>{{ errorMessage }}</p>
+  <button (click)="retryLoadProductos()">Reintentar</button>
 </div>
 <div *ngIf="isLoading">Cargando productos...</div>
 <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
 
-<div class="product-list">
+<div *ngIf="!hasError" class="product-list">
   <app-product-card *ngFor="let producto of productos$ | async" [producto]="producto"></app-product-card>
 </div>
 <br>

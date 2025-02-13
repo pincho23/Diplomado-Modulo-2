@@ -20,11 +20,15 @@ export class ListaProductosComponent implements OnInit {
   itemsPerPage = 12;
   isLoading = false;
   errorMessage = '';
+  hasError = false;
   cart: any[] = [];
   searchQuery: string = '';
+  hasError$: Observable<boolean>;
+ 
 
   constructor(private productService: ProductService) {
     this.productos$ = this.productService.filteredProducts$;
+    this.hasError$ = this.productService.hasError$;
   }
 
   ngOnInit() {
@@ -35,6 +39,7 @@ export class ListaProductosComponent implements OnInit {
   loadProductos() {
     this.isLoading = true;
     this.errorMessage = '';
+    this.hasError = false;
   
     this.productService.fetchProductos(this.currentPage * this.itemsPerPage, this.itemsPerPage)
       .subscribe({
@@ -44,10 +49,21 @@ export class ListaProductosComponent implements OnInit {
           this.isLoading = false;
         },
         error: (error: any) => {
-          this.errorMessage = 'Error al cargar productos. Inténtalo de nuevo.';
+          console.error('Error de red:', error);
+          if (!navigator.onLine) {
+            this.errorMessage = 'No hay conexión a Internet. Verifica tu red e intenta de nuevo.';
+          } else {
+            this.errorMessage = 'Error al cargar productos. Inténtalo de nuevo.';
+          }
           this.isLoading = false;
+          this.hasError = true;
         }
       });
+  }
+
+  retryLoadProductos() {
+    this.loadProductos();
+    this.productService.resetError();
   }
 
   nextPage() {
