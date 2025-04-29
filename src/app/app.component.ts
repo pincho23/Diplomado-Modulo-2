@@ -5,19 +5,20 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { ProductService } from './services/product.service';
 import { ListaProductosComponent } from './lista-productos/lista-productos.component';
+import { ContactPageComponent } from "./contact-page/contact-page.component";
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterModule,  
-    RouterOutlet,                  
+    RouterModule,
+    RouterOutlet,
     CommonModule,
     MatToolbarModule,
     MatButtonModule,
-    
-  ],
+    ContactPageComponent
+],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
