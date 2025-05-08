@@ -11,9 +11,21 @@
     <p><strong>Precio:</strong> {{ producto.precio | currency }}</p>
   </mat-card-content>
 
-  <mat-card-actions (click)="$event.stopPropagation()">
-    <button mat-raised-button color="primary" (click)="addToCart($event)">Agregar al carrito</button>
-  </mat-card-actions>
+  <mat-card-actions
+  role="group"
+  aria-label="Acciones de producto"
+  (click)="$event.stopPropagation()"
+>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="addToCart($event)"
+    aria-label="Agregar este producto al carrito"
+  >
+    Agregar al carrito
+  </button>
+</mat-card-actions>
+
 </mat-card>
 
 
