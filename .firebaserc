@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "diplomado-mod5"
-  }
+    "default": "diplomado-mod5",
+    "Dev": "diplomado-mod5-dev"
+  },
+  "targets": {},
+  "etags": {}
 }
